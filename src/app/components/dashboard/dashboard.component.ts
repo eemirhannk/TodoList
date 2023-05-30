@@ -1,6 +1,7 @@
 import { Task } from 'src/app/model/task';
 import { CrudService } from './../../service/crud.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit {
   addTaskValue : string = '';
   editTaskValue : string = '';
 
-  constructor(private CrudService : CrudService ){
+  constructor(private CrudService : CrudService, private router : Router){
 
   }
   ngOnInit(): void {
@@ -24,6 +25,16 @@ export class DashboardComponent implements OnInit {
     this.taskObj = new Task();
     this.taskArr = [];
     this.getAllTask();
+  }
+
+  sendTask(task : Task) {
+    const task_detail = {
+      title : task.task_name,
+      id : task.id
+    };
+    
+    this.router.navigate(['task/'+task.id], { queryParams: task_detail });
+    console.log(task_detail.title)
   }
 
   getAllTask() {

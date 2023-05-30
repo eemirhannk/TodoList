@@ -23,6 +23,7 @@
                                 <div class="text col-md-10 border-0">{{task.task_name}}</div>
                                 <button class="btn btn-outline-primary col me-2" data-bs-toggle="modal" type="button" data-bs-target="#exampleModal" (click)="call(task)">E</button>
                                 <div class="btn btn-outline-danger col" (click)="deleteTask(task)">X</div>
+                                <div class="btn btn-outline-secondary col mt-1" (click)="sendTask(task)">Send</div>
                             </div>
                         </div>
                     </div>
